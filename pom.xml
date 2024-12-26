@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.5.6</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.javaproject</groupId>
+	<artifactId>database_service_project</artifactId>
+	<version>0.0.4-SNAPSHOT</version>
+	<name>database_service_project</name>
+	<description>Project for Spring Boot</description>
+	<packaging>jar</packaging>
+	<properties>
+		 <!-- Generic properties -->
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+
+        <!-- Spring -->
+        <!-- For framework compatibility, refer to the Spring Boot Dependencies BOM -->
+        <!-- https://github.com/spring-projects/spring-boot/blob/master/spring-boot-project/spring-boot-dependencies/build.gradle -->
+        <spring-framework.version>5.3.18</spring-framework.version>
+
+        <!-- Web dependencies -->
+        <!-- Version update should also be done in wro.xml, petclinic.less and static resources: htmlHeader.tag and footer.tag-->
+        <webjars-bootstrap.version>3.3.6</webjars-bootstrap.version>
+        <webjars-jquery-ui.version>1.12.1</webjars-jquery-ui.version>
+        <webjars-jquery.version>3.5.1</webjars-jquery.version>
+        <wro4j.version>1.8.0</wro4j.version> <!-- wro4j 1.0.0 requires Java 9 -->
+
+        <!-- Java EE / Java SE dependencies -->
+        <tomcat.version>9.0.46</tomcat.version>
+        <jaxb-api.version>2.3.1</jaxb-api.version>
+        <jaxb-runtime.version>2.3.4</jaxb-runtime.version>
+        <javax-activation.version>1.2.0</javax-activation.version>
+        <servlet-api.version>4.0.4</servlet-api.version>
+        <taglibs-standard.version>1.2.5</taglibs-standard.version>
+
+        <!-- Persistence -->
+        <spring-data.version>2021.1.0-RC1</spring-data.version>
+        <hibernate.version>5.6.0.Final</hibernate.version>
+        <hibernate-validator.version>6.2.0.Final</hibernate-validator.version>
+        <hsqldb.version>2.5.2</hsqldb.version>
+        <h2database.version>1.4.200</h2database.version>
+
+        <!-- Logging -->
+        <slf4j.version>1.7.32</slf4j.version>
+        <logback.version>1.2.6</logback.version>
+
+        <!-- Test -->
+        <assertj.version>3.21.0</assertj.version>
+        <json-path.version>2.6.0</json-path.version>
+        <mockito.version>4.0.0</mockito.version>
+        <hamcrest.version>2.2</hamcrest.version>
+        <junit-jupiter.version>5.8.1</junit-jupiter.version>
+
+        <!-- JDBC Drivers -->
+        <mysql-driver.version>8.0.19</mysql-driver.version>
+        <postgresql-driver.version>9.4.1211.jre7</postgresql-driver.version>
+
+        <!-- Others -->
+        <jackson.version>2.12.4</jackson.version>
+        <aspectj.version>1.9.7</aspectj.version>
+
+        <!-- Maven plugins -->
+        <jetty-maven-plugin.version>9.4.43.v20210629</jetty-maven-plugin.version>
+        <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <maven-eclipse-plugin.version>2.10</maven-eclipse-plugin.version>
+        <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
+        <maven-surefire-plugin.version>2.22.1</maven-surefire-plugin.version>
+        <maven-war-plugin.version>3.3.1</maven-war-plugin.version>
+        <jacoco-maven-plugin>0.8.6</jacoco-maven-plugin>
+
+        <!-- Docker image -->
+        <docker.jib-maven-plugin.version>2.6.0</docker.jib-maven-plugin.version>
+        <docker.image.prefix>springcommunity</docker.image.prefix>
+
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.thymeleaf.extras</groupId>
+			<artifactId>thymeleaf-extras-springsecurity5</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+
+			<plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco-maven-plugin}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+		</plugins>
+	</build>
+
+
+ <distributionManagement>
+        <repository>
+            <id>maven-releases</id>
+            <url>http://13.235.69.116:8081/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>maven-snapshots</id>
+            <url>http://13.235.69.116:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+</project>
